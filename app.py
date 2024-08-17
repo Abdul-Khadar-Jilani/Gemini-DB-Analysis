@@ -82,7 +82,7 @@ def readsql(sql, db):
 title = "GenAI-DBManager"
 st.markdown(f"<h1 style='text-align: center;'>{title}</h1>", unsafe_allow_html=True)
 col1, col2 = st.columns(2,gap="large")
-with col2:
+with col1:
     st.title("Ask AI")
     prompt = [
         """you are an expert in converting English questions to SQL query!
@@ -114,7 +114,7 @@ with col2:
                 st.header(row)
         else:
             st.error("Error retrieving data from the database.")
-with col2:
+with col1:
     def show_table_data():
         with sqlite3.connect("example.db") as conn:
             cur = conn.cursor()
@@ -137,7 +137,7 @@ with col2:
     #with st.expander("USER DATA"):
     if show_button:
             show_table_data()
-with col1:
+with col2:
     def get_table_columns(table_name):
         """Get column names from a table in the database."""
         with sqlite3.connect("example.db") as conn:
